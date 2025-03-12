@@ -1,0 +1,129 @@
+/* Header Styles*/
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    background-color: rgb(210, 112, 0); 
+
+    border-bottom: 2px solid black;
+}
+header h1{
+    color: white;
+    font-size: 50px;
+}
+header h2{
+    color: rgb(0, 80, 199);
+    font-size: 30px;
+
+    transition: transform 0.1s ease-in-out;
+}
+header h2:hover{
+    transform: scale(1.1);
+}
+header h2:active{
+    color: white;
+}
+#logo{
+    height: 100px;
+    width: 100px;
+
+    transition: transform 0.1s ease-in-out;
+}
+#logo:hover{
+    transform: scale(1.2);
+}
+
+/*Client Portal Main Body*/
+.main-portal{
+    background-color: rgb(63, 63, 63);
+    height: 800px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main-portal h1{
+    color: white;
+    font-size: 70px;
+    margin-top: 0;
+}
+.main-portal fieldset{
+    margin: 5%;
+    width: 75%;
+    border: none;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+
+    text-align: center;
+    word-spacing: 50px;
+}
+.main-portal p{
+    margin-top: 5px;
+    color: white;
+    font-size: 40px;
+}
+#new-quoteB{
+    height: 100px;
+    width: 300px;
+    margin-top: 100px;
+
+    font-size: 35px;
+
+    border-radius: 5px;
+
+    transition: transform 0.1s ease-in-out;
+}
+#new-quoteB:hover{
+    transform: scale(1.1);
+}
+#new-quoteB:active{
+    color: rgb(220, 152, 37);
+}
+.main-portal hr{
+    width: 90%; 
+}
+#main-portal-footer{
+    background-color: rgb(122,122,122); 
+}
+
+/*Admin Portal Main Body*/
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+#edit-quoteB{
+    height: 80px;
+    width: 250px;
+    margin-top: 50px;
+
+    font-size: 35px;
+
+    border-radius: 5px;   
+
+    transition: transform 0.1s ease-in-out;
+}
+#edit-quoteB:hover{
+    transform: scale(1.1);
+}
+#edit-quoteB:active{
+    color: rgb(220, 152, 37);
+}
+
+/*Footer Styles*/
+footer{
+    display: flex;
+    align-items: center;
+    padding-left: 2.5%;
+
+    background-color: rgb(63,63,65); 
+
+    border-top: 2px solid black;
+}
+footer h3{
+    color: white;
+}

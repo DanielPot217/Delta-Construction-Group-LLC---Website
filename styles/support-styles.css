@@ -1,0 +1,120 @@
+/* Header Styles*/
+header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+
+    background-color: rgb(210, 112, 0, 85%); 
+
+    border-bottom: 2px solid black;
+}
+header h1{
+    color: white;
+    font-size: 50px;
+}
+header h2{
+    color: rgb(0, 80, 199);
+    font-size: 30px;
+
+    transition: transform 0.1s ease-in-out;
+}
+header h2:hover{
+    transform: scale(1.1);
+}
+header h2:active{
+    color: white;
+}
+#logo{
+    height: 100px;
+    width: 100px;
+
+    transition: transform 0.1s ease-in-out;
+}
+#logo:hover{
+    transform: scale(1.2);
+}
+
+/*Support Main Body*/
+body{
+    background-image: url("/images/home-background.png");
+    background-size: cover;                   
+    background-position: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+.main-support{
+    height: 800px;
+}
+.main-support form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5%;
+}
+.main-support ::placeholder{
+    color: white;
+}
+#support-email{
+    height: 50px;
+    width: 860px;
+
+    font-size: 25px;
+    color: white;
+
+    background-color: rgb(122, 122, 122, 85%);
+
+    border: 3px solid black;
+    border-radius: 5px;
+}
+#support-select{
+    margin: 20px;
+
+    height: 50px;
+    width: 870px;
+
+    font-size: 25px;
+    color: white;
+
+    background-color: rgb(122, 122, 122, 85%);
+
+    border: 3px solid black;
+    border-radius: 5px;
+}
+#support-question{
+    height: 500px;
+    width: 860px;
+
+    font-size: 25px;
+    color: white;
+
+    background-color: rgb(122, 122, 122, 85%);
+
+    border: 3px solid black;
+    border-radius: 5px;
+}
+#support-submit{
+    margin-top: 25px;
+    height: 50px;
+    width: 200px;
+    font-size: 25px;
+
+    border-radius: 5px;
+}
+
+/*Footer Styles*/
+footer{
+    display: flex;
+    align-items: center;
+    padding-left: 2.5%;
+
+    background-color: rgb(63,63,65); 
+
+    border-top: 2px solid black;
+}
+footer h3{
+    color: white;
+}
