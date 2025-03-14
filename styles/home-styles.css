@@ -39,7 +39,7 @@ header h2:active{
 
 /*Body Styles*/
 body{
-    background-image: url("/images/home-background.png");
+    background-image: url("../images/home-background.png");
     background-size: cover;                   
     background-position: center;
     margin: 0;
@@ -56,10 +56,12 @@ body{
     font-size: 80px;
     font-weight: bold;
 }
-.main ul{
+#ul-h1{
     color: rgb(0, 80, 199);
     font-size: 70px;
-
+    margin-left: 225px;
+}
+.main ul{
     margin-left: 300px;
 }
 .main ul li{
@@ -73,6 +75,8 @@ body{
 #left-side{
     height: 100%;
     width: 25%;
+
+    padding-left: 1%;
 
     display: flex;
     flex-direction: column;
@@ -106,12 +110,15 @@ body{
 }
 #contact-info{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
-    margin-right: 20%;
+    flex-wrap: wrap;
+}
+#contact-info div{
+    display: flex;
+    align-items: center;
 
-    width: 300px;
+    width: 100%;
+    margin-left: 15%;
 }
 #contact-info h2{
     color: white;
@@ -124,7 +131,7 @@ body{
     transform: scale(1.1);
     color: rgb(0, 80, 199);
 }
-#icon{
+.icon{
     height: 50px;
     width: 50px;
     margin-right: 5%;

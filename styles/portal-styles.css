@@ -1,11 +1,12 @@
 /* Header Styles*/
+/* Header Styles*/
 header{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-left: 2.5%;
-    padding-right: 2.5%;
+    padding-right: 10%;
 
     background-color: rgb(210, 112, 0); 
 
@@ -14,6 +15,8 @@ header{
 header h1{
     color: white;
     font-size: 50px;
+    flex: 1; 
+    text-align: center;
 }
 header h2{
     color: rgb(0, 80, 199);

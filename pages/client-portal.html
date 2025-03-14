@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>DCG Client Portal</title>
-        <link rel="stylesheet" href="/styles/portal-styles.css">
+        <link rel="stylesheet" href="../styles/portal-styles.css">
     </head>
     <body>
+        <!--Head/Navigation bar of the webpage-->
         <header>
+            <!--Link to the home page-->
             <a href="home.html">
-                <img src="/images/home-logo.png" alt="logo" id="logo">
+                <img src="../images/home-logo.png" alt="logo" id="logo">
             </a>
             <h1>Client Portal</h1>
-            <h2></h2>
         </header>
 
+            <!--Shows the current quotes and their status, either pending to be reviewed, or ready to be paid(Future feature) -->
         <div class="main-portal">
             <fieldset>
                 <p>QuoteID | TypeofService | Quote | Status | Price</p>
@@ -20,11 +22,14 @@
                 <p>QuoteID | TypeofService | Quote | Status | Price</p>
             </fieldset>
             <hr>
+
+            <!--Allows the creation of a new quote to be sent to the admins to be reviewed(Future feature)-->
             <button type="button" id="new-quoteB">Create New Quote</button>
         </div>
         
+        <!--Footer of the website -->
         <footer id="main-portal-footer">
-            <h3>&copy 2025 Daniel Potapov All Rights Reserved</h3>
+            <h3>&copy; 2025 Daniel Potapov All Rights Reserved</h3>
         </footer>  
     </body> 
 </html>

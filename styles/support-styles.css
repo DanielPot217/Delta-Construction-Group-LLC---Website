@@ -39,7 +39,7 @@ header h2:active{
 
 /*Support Main Body*/
 body{
-    background-image: url("/images/home-background.png");
+    background-image: url("../images/home-background.png");
     background-size: cover;                   
     background-position: center;
     margin: 0;
@@ -103,6 +103,15 @@ body{
     font-size: 25px;
 
     border-radius: 5px;
+
+    transition: transform 0.1s ease-in-out;
+}
+
+#support-submit:hover{
+    transform: scale(1.1);
+}
+#support-submit:active{
+    color: rgb(210, 112, 0);
 }
 
 /*Footer Styles*/

@@ -39,7 +39,7 @@ header h2:active{
 
 /*About Us Main Body*/
 body{
-    background-image: url("/images/home-background.png");
+    background-image: url("../images/home-background.png");
     background-size: cover;                   
     background-position: center;
     margin: 0;

@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>Delta Construction Group, LLC</title>
-        <link rel="stylesheet" href="/styles/home-styles.css">
+        <link rel="stylesheet" href="../styles/home-styles.css">
     </head>
     <body>
+        <!--Head/Navigation bar of the webpage-->
         <header>
+            <!--Link to the home page-->
             <a href="home.html">
-                <img src="/images/logo.png" alt="logo" id="logo">
+                <img src="../images/logo.png" alt="logo" id="logo">
             </a>
             <h1>Delta Construction Group, LLC</h1>
+            <!--Link to the login page-->
             <a href="login.html"><h2>Login</h2></a>
         </header> 
 
         <div class="main">
+            <!--Left side of the home page, has about us link, quoting page shortcut, contact info-->
             <div id="left-side">
-                <a href="about.html">
-                    <button type="button" id="aboutB">About Us</button>
-                </a>
+                <button type="button" id="aboutB" onclick="window.location.href='about.html'">About Us</button>
                 
                 <h1>Contact Us:</h1>
                     <div id="contact-info">
-                        <img src="/images/phone.png" alt="phone-img" id="icon">
-                        <h2>555-555-5555</h2>
-                        <img src="/images/email.png" alt="email-img" id="icon">
-                        <a href="support.html"><h2>Support Page</h2></a>
+                        <div>
+                            <img src="../images/phone.png" alt="phone-img" class="icon">
+                            <h2>555-555-5555</h2>
+                        </div>
+                        <div>
+                            <img src="../images/email.png" alt="email-img" class="icon">
+                            <!--Link to the support page page-->
+                            <a href="support.html"><h2>Support Page</h2></a>
+                        </div>
                     </div>
             
-                <a href="login.html">
-                    <button type="button" id="quoteB">Quote</button>
-                </a>
+                <!--Link to the login page-->
+                <button type="button" id="quoteB" onclick="window.location.href='login.html'">Quote</button>
             </div> 
             <h1>How can we help you?</h1>
-            <ul>Our Services:
+            <h1 id="ul-h1">Our Services:</h1>
+            <ul>
                 <li>Electrical</li>
                 <li>Pluming</li>
                 <li>Siding</li>
@@ -40,8 +47,9 @@
             </ul>
         </div>
 
+        <!--Footer of the website -->
         <footer>
-            <h3>&copy 2025 Daniel Potapov All Rights Reserved</h3>
+            <h3>&copy; 2025 Daniel Potapov All Rights Reserved</h3>
         </footer>  
     </body> 
 </html>
