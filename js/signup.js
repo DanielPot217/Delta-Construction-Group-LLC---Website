@@ -11,6 +11,7 @@ $(document).ready(function() {
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.quotes = [];
     }
 
     let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -62,11 +63,13 @@ $(document).ready(function() {
                 $('input[name="signup-lname"]').val(), 
                 $('input[name="signup-phone"]').val(), 
                 $('input[name="signup-email"]').val(), 
-                $('input[name="signup-password"]').val());
+                $('input[name="signup-password"]').val(),
+            );
 
             users.push(user);
             localStorage.setItem("users", JSON.stringify(users));
 
+            //DELETE LATER
             console.log(JSON.parse(localStorage.getItem('users')));
 
             $('.main-login').html('<h2>Account Created Successfully! You may now login on the Login Page! Redirecting...</h2>');

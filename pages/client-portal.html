@@ -18,22 +18,33 @@
             <!--Shows the current quotes and their status, either pending to be reviewed, or ready to be paid(Future feature) -->
         <div class="main-portal">
             <fieldset>
-                <p>QuoteID | TypeofService | Quote | Status | Price</p>
-                <p>QuoteID | TypeofService | Quote | Status | Price</p>
-                <p>QuoteID | TypeofService | Quote | Status | Price</p>
+                
             </fieldset>
             <hr>
 
             <!--Allows the creation of a new quote to be sent to the admins to be reviewed(Future feature)-->
             <button type="button" id="new-quoteB">Create New Quote</button>
+
+            <div id="new-quote-div">
+                <form id="new-quote">
+                    <label for="address">Address:</label>
+                    <input type="text" name="address">
+                    <label for="date">Date:</label>
+                    <input type="date" name="date">
+                    <label for="numberplugs">Number of plugs:</label>
+                    <input type="number" name="numberplugs">
+                    <label for="numberswitches">Number of switches:</label>
+                    <input type="number" name="numberswitches">
+                    <input type="submit">
+                </form>
+            </div>
         </div>
-        
+
         <!--Footer of the website -->
         <footer id="main-portal-footer">
             <h3>&copy; 2025 Daniel Potapov All Rights Reserved</h3>
         </footer>  
 
-        
             <script src="../js/jquery-3.7.1.min.js"></script>
             <script src="../js/client-portal.js"></script>
     </body> 
