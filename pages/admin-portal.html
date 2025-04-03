@@ -1,3 +1,5 @@
+<!--jQuery Expander Plugin Used: https://www.jqueryscript.net/text/read-more-less-expander.html-->
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,15 +20,11 @@
         <div class="main-portal">
             <!--Pending quotes set to be reviwed by the admin, or payed by the client-->
             <h1>Pending Quotes</h1> 
-            <fieldset>
-                <p>No Current Quotes</p>
-            </fieldset>
+            <fieldset id="quotes"></fieldset>
             <hr>
 
             <h1>Support Questions</h1>
-            <fieldset>
-                <p>No Current Questions</p>
-            </fieldset>
+            <fieldset id="questions"></fieldset>
         </div>
         
         <!--Footer of the website -->
@@ -35,6 +33,7 @@
         </footer>  
 
         <script src="../js/jquery-3.7.1.min.js"></script>
+        <script src="../js/jquery.expander.min.js"></script>
         <script src="../js/admin-portal.js"></script>
     </body> 
 </html>

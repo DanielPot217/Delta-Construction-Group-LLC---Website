@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     let users = JSON.parse(localStorage.getItem('users')) || [];
     
-    if (!users.some(user => user.email === "admin@example.com")) {
+    if (!users.some(user => user.email === "admin@gmail.com")) {
         users.push({
             firstName: "Admin",
             lastName: "Admin",

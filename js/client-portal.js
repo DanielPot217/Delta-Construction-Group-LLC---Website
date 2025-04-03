@@ -5,7 +5,7 @@ $(document).ready(function ()
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
     if (!loggedInUser) 
-        {
+    {
         window.location.href = "index.html";
     }
 
@@ -19,11 +19,19 @@ $(document).ready(function ()
     }
 
     localStorage.removeItem("loggedInUser");
+
+    //Resave the updates User Info in to Storage
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let userIndex = users.findIndex(user => user.email === loggedInUser.email && user.password === loggedInUser.password);        
+    users[userIndex] = loggedInUser;
+    localStorage.setItem("users", JSON.stringify(users));
+   
     window.location.href = "home.html";
     });
 
-    //DELETE LATER
+    //DELETE LATER 
     console.log(loggedInUser);
+    
 
     function ElectricalQuote(id, name, address, date, numberplugs, numberswitches)
     {
@@ -47,6 +55,7 @@ $(document).ready(function ()
             `<p>QuoteID:${quote.id} | ElectricalQuote | Pending | Price:$${(quote.numberplugs * 3) + (quote.numberswitches * 5)}</p>`
         );
     });
+
 
     $('#new-quote-div').hide();
 

@@ -19,12 +19,13 @@
         <!--Allows the submission based on a selected section, and a textbox for the actual text of the 
         question, which sends the question to a section in the admin panel(Future Feature)-->
         <div class="main-support">
-            <form>
+            <form id="support-form">
                 <input type="text" name="support-email" id="support-email" placeholder="Enter Your Email">
                 <select id="support-select" name="question-nature">
                         <option>Select a Question</option>
                         <option>Electrical Question</option>
                         <option>Plumbing Question</option>
+                        <option>Other</option>
                 </select> 
                 <textarea name="question" id="support-question" placeholder="Type you Question..."></textarea> 
                 <input type="submit" id="support-submit">
@@ -35,5 +36,9 @@
         <footer>
             <h3>&copy; 2025 Daniel Potapov All Rights Reserved</h3>
         </footer>  
+
+        <!--Jquery Library, and Support Page JS-->
+        <script src="../js/jquery-3.7.1.min.js"></script>
+        <script src="../js/support.js"></script>
     </body> 
 </html>

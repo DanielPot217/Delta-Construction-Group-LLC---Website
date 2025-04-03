@@ -42,7 +42,7 @@ header h2:active{
 /*Client Portal Main Body*/
 .main-portal{
     background-color: rgb(63, 63, 63);
-    height: 800px;
+    height: 2500px;
 
     display: flex;
     flex-direction: column;
@@ -59,9 +59,19 @@ header h2:active{
     border: none;
     border-left: 5px solid black;
     border-right: 5px solid black;
-
-    text-align: center;
-    word-spacing: 50px;
+}
+.main-portal fieldset h1{
+    color: white;
+    font-size: 40px;
+}
+.main-portal fieldset h2{
+    color: white;
+    font-size: 25px;
+}
+.main-portal fieldset h3{
+    color: white;
+    font-size: 25px;
+    font-weight: lighter;
 }
 .main-portal p{
     margin-top: 5px;
