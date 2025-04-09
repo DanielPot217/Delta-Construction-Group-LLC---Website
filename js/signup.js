@@ -14,8 +14,10 @@ $(document).ready(function() {
         this.quotes = [];
     }
 
+    //Loads or Creates users array from/into memory
     let users = JSON.parse(localStorage.getItem('users')) || [];
 
+    //Form Validator Plugin
     $("#signup-form").validate({
         rules: {
             "signup-fname": {
@@ -33,7 +35,6 @@ $(document).ready(function() {
             },
             "signup-password": {
                 required: true,
-                minlength: 6
             }
         },
         messages: {
@@ -52,12 +53,12 @@ $(document).ready(function() {
             },
             "signup-password": {
                 required: "Please enter a password",
-                minlength: "Password must be at least 6 characters long"
             }
         },
         submitHandler: function (form, event) {
             event.preventDefault();
 
+            //Creates User, adds to the users array
             let user = new User(
                 $('input[name="signup-fname"]').val(), 
                 $('input[name="signup-lname"]').val(), 
@@ -69,9 +70,7 @@ $(document).ready(function() {
             users.push(user);
             localStorage.setItem("users", JSON.stringify(users));
 
-            //DELETE LATER
-            console.log(JSON.parse(localStorage.getItem('users')));
-
+            //Redirects to the login page
             $('.main-login').html('<h2>Account Created Successfully! You may now login on the Login Page! Redirecting...</h2>');
             setTimeout(() => {
                 window.location.href = "login.html";

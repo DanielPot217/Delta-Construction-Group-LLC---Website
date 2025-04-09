@@ -2,13 +2,16 @@
 
 $(document).ready(function () 
 {
+    //Pulls the Logged in User from Memeory to load profile
     let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
 
+    //Redirects Home if there is no logged in user 
     if (!loggedInUser) 
     {
         window.location.href = "index.html";
     }
 
+    //Logout Button Functionality, On click, removes the logged in user from memory, saves user profile
     $("#logout").click(function () 
     {
         let loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
@@ -28,58 +31,79 @@ $(document).ready(function ()
    
     window.location.href = "home.html";
     });
-
-    //DELETE LATER 
-    console.log(loggedInUser);
     
 
-    function ElectricalQuote(id, name, address, date, numberplugs, numberswitches)
+    //Quote Object
+    function ElectricalQuote(id, name, date, address, numberplugs, numberswitches)
     {
         this.id = id;
         this.name = name;
+        this.date = date;
         this.address = address;
         this.numberplugs = numberplugs;
         this.numberswitches = numberswitches;
     }
+    //If quotes array exists in memory, load the array into loggedin user
     if (!loggedInUser.quotes) 
     {
         loggedInUser.quotes = [];
     }
 
+    //Loads quotes, and counter of quote ids
     let quotes = loggedInUser.quotes;    
     let counter = loggedInUser.counter || 0;
 
+    //Displays Quotes from the quotes array 
     $('fieldset').html("");
-    quotes.forEach(quote => {
+    if(quotes.length === 0)
+    {
         $('fieldset').append(
-            `<p>QuoteID:${quote.id} | ElectricalQuote | Pending | Price:$${(quote.numberplugs * 3) + (quote.numberswitches * 5)}</p>`
-        );
-    });
+            '<p class="center-text">No Current Quotes</p>'
+        );       
+    }else{
+        quotes.forEach(quote => {
+            $('fieldset').append(
+                `<p>QuoteID:${quote.id} | ElectricalQuote | Pending | Price:$${(quote.numberplugs * 3) + (quote.numberswitches * 5)}</p>`
+            );
+        });
+    }
+    
 
-
-    $('#new-quote-div').hide();
+    //Creates New Quote
+    $('#new-quote').hide();
 
     $('#new-quoteB').click(function(){
         $('#new-quoteB').hide();
-        $('#new-quote-div').show();
+        $('#new-quote').show();
     });
+
+    //DatePicker Plugin
+    $('input[name="date"]').datepicker({ minDate: 0, showAnim: "show",
+        beforeShow: function(input, inst) {
+          setTimeout(function() {
+            $("#ui-datepicker-div").hide().effect("slide", {
+              direction: "up",
+              mode: "show"
+            }, 100);
+          }, 10);
+    }});
 
     $('#new-quote').submit(function(event)
     {
-        event.preventDefault();
-
+        //Creates New Quote object with details entered by user
         counter++;
         loggedInUser.counter = counter;
-        
+
         let elecQuote = new ElectricalQuote(
             counter, 
             'Electrical Quote',
-            $('input[name="address"]').val(),
             $('input[name="date"]').val(),
+            $('input[name="address"]').val(),
             $('input[name="numberplugs"]').val(),
             $('input[name="numberswitches"]').val()
         );
 
+        //Displays on Screen, Adds to Quotes Array, Saves into Memory
         $('fieldset').append(`<p>QuoteID:${counter} | ElectricalQuote | Pending | Price:$${(elecQuote.numberplugs * 3) + (elecQuote.numberswitches * 5)}</p>`);
         
         quotes.push(elecQuote);
@@ -89,9 +113,6 @@ $(document).ready(function ()
 
         $('#new-quoteB').show();
         $('#new-quote-div').show();
-
-        //DELETE LATER
-        console.log(quotes);
     });
 });
 

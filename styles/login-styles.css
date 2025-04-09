@@ -78,7 +78,7 @@ body{
 .login-details::placeholder{
     color: white;
 }
-#login-submit{
+#submitB{
     height: 50px;
     width: 260px;
     margin: 5%;
@@ -95,6 +95,10 @@ body{
 }
 .main-login h2{
     color: white;
+}
+.error{
+    color: red;
+    font-weight: bold;
 }
 
 

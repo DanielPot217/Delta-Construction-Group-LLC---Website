@@ -27,30 +27,33 @@ $(document).ready(function ()
         $('#quotes').append(
             `<h1>No New Clients<h1>`
         );   
+    }else{
+        //Loops the the list of current user accounts and displays them and their quote information
+        users.forEach(user => {
+            //Makes sure it doesn't display the admin user in the client list
+            if(user.firstName != 'Admin')
+            {
+                //Dsiplayes the information of the current User
+                $('#quotes').append(
+                    `<h1>Client: ${user.firstName} ${user.lastName}</h1>
+                    <h3>Phone: ${user.phone} &emsp; Email: ${user.email}</h3>
+                    <hr class="white-line">`,
+                );
+
+                //Displays Quote Information Based On the Current User Selected, if no quotes display no quote text
+                if(user.quotes.length === 0)
+                {
+                    $('#quotes').append('<p class="center-text">No Current Quotes</p><hr class="white-line">');
+                }else{
+                    user.quotes.forEach(quote => {
+                        $('#quotes').append(`<h2>ID: ${quote.id} | Type: ${quote.name} | Address: ${quote.address} | Plugs:${quote.numberplugs} | Switches: ${quote.numberswitches}</h2>`);
+                    });
+        
+                    $('#quotes').append(`<hr class="white-line">`);
+                }
+            }
+        });
     }
-
-    //Loops the the list of current user accounts and displays them and their quote information
-    users.forEach(user => {
-        //Makes sure it doesn't display the admin user in the client list
-        if(user.firstName != 'Admin')
-        {
-            //Dsiplayes the information of the current User
-            //DELETE LATER
-            console.log(user);
-            $('#quotes').append(
-                `<h1>Client: ${user.firstName} ${user.lastName}</h1>
-                <h3>Phone: ${user.phone} &emsp; Email: ${user.email}</h3>
-                <hr>`,
-            );
-
-            //Displays Quote Information Based On the Current User Selected
-            user.quotes.forEach(quote => {
-                $('#quotes').append(`<h2>ID: ${quote.id} Type: ${quote.name} Address: ${quote.address} Plugs:${quote.numberplugs} Switches: ${quote.numberswitches}</h2>`);
-            });
-
-            $('#quotes').append(`<hr>`);
-        }
-    });
 
     //Load The Questions Array from Local Sotrage
     let questions = JSON.parse(localStorage.getItem('questions')) || [];
@@ -58,7 +61,7 @@ $(document).ready(function ()
     //Checks if there are any Questions, if not found displayes a text
     if(questions.length === 0)
         {
-            $('#quotes').append(`<h1>No New Clients<h1>`);   
+            $('#quotes').append('<h1>No New Questions<h1>');   
         }
 
     //Displays every question from the question array. Creates a quick snippet of the question text, and adds a read more for more info.
@@ -67,7 +70,4 @@ $(document).ready(function ()
         $('#questions').append(`<p class="question">Question: ${question.text}</p>`);
         $('.question').expander({slicePoint: 200, expandEffect:'slideDown', expandSpeed: 250,});
     });
-
-    //DELETE LATER
-    console.log(questions);
 });
