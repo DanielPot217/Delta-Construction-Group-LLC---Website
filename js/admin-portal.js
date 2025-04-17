@@ -61,13 +61,30 @@ $(document).ready(function ()
     //Checks if there are any Questions, if not found displayes a text
     if(questions.length === 0)
         {
-            $('#quotes').append('<h1>No New Questions<h1>');   
+            $('#questions').append('<p class="center-text">No New Questions</p>');   
         }
 
     //Displays every question from the question array. Creates a quick snippet of the question text, and adds a read more for more info.
     questions.forEach(question => {
-        $('#questions').append(`<h1>Email: ${question.email} Nature: ${question.nature}`);
-        $('#questions').append(`<p class="question">Question: ${question.text}</p>`);
-        $('.question').expander({slicePoint: 200, expandEffect:'slideDown', expandSpeed: 250,});
+        $('#questions').append(`<div class="question" data-email="${question.email}"><h1>Email: ${question.email} Nature: ${question.nature}</h1>
+        <p class="question-text">Question: ${question.text}</p> 
+        <button class="deleteB">Delete</button></div>`);
+
+        //Expander Plugin, shortens questions longer than 200 characters, adds a read more to expand to full length of the questions
+        $('.question-text').expander({slicePoint: 200, expandEffect:'slideDown', expandSpeed: 250,});
+    });
+
+    //Delete Question Button Functionallity
+    $('#questions').on('click', '.deleteB', function() 
+    {
+        //Finds the question closets to the delete button, Filters out of array, saves to memeory, and refreshes
+        const questionDiv = $(this).closest('.question');
+        const email = questionDiv.data('email');
+        
+        questions = questions.filter(question => question.email !== email);
+        
+        localStorage.setItem("questions", JSON.stringify(questions));
+
+        location.reload();
     });
 });

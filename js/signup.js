@@ -17,6 +17,12 @@ $(document).ready(function() {
     //Loads or Creates users array from/into memory
     let users = JSON.parse(localStorage.getItem('users')) || [];
 
+    //Custom Method for Validator Plugin to Check if an email is in use 
+    $.validator.addMethod("uniqueEmail", function (value, element) 
+    {
+        return !users.some(user => user.email === value);
+    }, "This email is already in use");
+
     //Form Validator Plugin
     $("#signup-form").validate({
         rules: {
@@ -31,7 +37,8 @@ $(document).ready(function() {
             },
             "signup-email": {
                 required: true,
-                email: true
+                email: true,
+                uniqueEmail: true,
             },
             "signup-password": {
                 required: true,
@@ -49,7 +56,8 @@ $(document).ready(function() {
             },
             "signup-email": {
                 required: "Please enter your Email",
-                email: "Enter a valid Email Address"
+                email: "Enter a valid Email Address",
+                uniqueEmail: "This email is already in use"
             },
             "signup-password": {
                 required: "Please enter a password",

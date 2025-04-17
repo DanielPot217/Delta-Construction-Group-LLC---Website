@@ -56,19 +56,36 @@ $(document).ready(function ()
     //Displays Quotes from the quotes array 
     $('fieldset').html("");
     if(quotes.length === 0)
-    {
-        $('fieldset').append(
-            '<p class="center-text">No Current Quotes</p>'
-        );       
-    }else{
-        quotes.forEach(quote => {
+        {
             $('fieldset').append(
-                `<p>QuoteID:${quote.id} | ElectricalQuote | Pending | Price:$${(quote.numberplugs * 3) + (quote.numberswitches * 5)}</p>`
-            );
-        });
-    }
+                '<p class="center-text">No Current Quotes</p>'
+            );       
+        }else{
+            quotes.forEach(quote => {
+                $('fieldset').append(
+                    `<div class="quote-div" data-id="${quote.id}">
+                        <p>QuoteID:${quote.id} | ElectricalQuote | Pending | Price:$${(quote.numberplugs * 3) + (quote.numberswitches * 5)}</p>
+                        <button class="deleteB">Delete</button>
+                    </div>`
+                );
+            });
+        }
     
+    //Delete Button Functionallity
+    $('fieldset').on('click', '.deleteB', function() {
+        const quoteDiv = $(this).closest('.quote-div');
+        const id = parseInt(quoteDiv.data('id'), 10);
+      
+        //Searches the quote array based on the id, and filters it out
+        quotes = quotes.filter(quote => quote.id !== id);
+        
+        loggedInUser.quotes = quotes;
+        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
+        location.reload();
+      });
+
+      
     //Creates New Quote
     $('#new-quote').hide();
 
