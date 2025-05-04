@@ -11,24 +11,23 @@
         <!--Head/Navigation bar of the webpage-->
         <header>
             <!--Link to the home page-->
-            <a href="home.html">
+            <a href="index.html">
                 <img src="../images/home-logo.png" alt="logo" id="logo">
             </a>
             <h1>Client Portal</h1>
-            <a href="home.html" id="logout"><h2>Logout</h2></a>
+            <a href="index.html" id="logout"><h2>Logout</h2></a>
         </header>
 
-            <!--Shows the current quotes and their status, either pending to be reviewed, or ready to be paid(Future feature) -->
+            <!--Shows the current quotes and their status, either pending to be reviewed, or ready to be paid-->
         <div class="main-portal" id="client-portal">
             <fieldset></fieldset>
-            <hr>
 
-            <!--Allows the creation of a new quote to be sent to the admins to be reviewed(Future feature)-->
+            <!--Allows the creation of a new quote to be sent to the admins to be reviewed-->
             <button type="button" id="new-quoteB">Create New Quote</button>
 
             <form id="new-quote">
                     <label for="address">Address:<input type="text" name="address" id="address"></label>
-                    <label for="date">Date:<input type="text" name="date" id="date"></label>
+                    <label for="date">Date:<input type="text" name="date" id="date" autocomplete="off"></label>
                     <label for="numberplugs">Plugs:<input type="number" name="numberplugs" id="numberplugs"></label>
                     <label for="numberswitches">Switches:<input type="number" name="numberswitches" id="numberswitches"></label>
                 <input type="submit" id="quote">
@@ -40,7 +39,7 @@
             <h3>&copy; 2025 Daniel Potapov All Rights Reserved</h3>
         </footer>  
 
-            <script src="../js/jquery-3.7.1.min.js"></script>
+            <script src="../js/jquery-3.7.1.min.js" onload="console.log('jQuery loaded:', typeof jQuery);"></script>
             <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
             <script src="../js/client-portal.js"></script>
     </body> 

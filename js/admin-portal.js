@@ -11,11 +11,12 @@ $(document).ready(function ()
         window.location.href = "index.html";
     }
 
-    //Logout Button, Removes the logged in Users from Temperary Memory(Logs Out)
+    //Logout Button, Removes the logged in Users from Temporary Memory(Logs Out)
     $("#logout").click(function () 
     {
         localStorage.removeItem("loggedInUser");
-        window.location.href = "home.html";
+        window.location.href = "index.html";
+        localStorage.setItem('users', JSON.stringify(users));
     });
 
     //Loads the Users Array from Local Storage
@@ -46,11 +47,71 @@ $(document).ready(function ()
                     $('#quotes').append('<p class="center-text">No Current Quotes</p><hr class="white-line">');
                 }else{
                     user.quotes.forEach(quote => {
-                        $('#quotes').append(`<h2>ID: ${quote.id} | Type: ${quote.name} | Address: ${quote.address} | Plugs:${quote.numberplugs} | Switches: ${quote.numberswitches}</h2>`);
+                        //Checks what css style to add to the status of the quote
+                        let statusClass;
+                        if(quote.status === 'Approved')
+                        {
+                            statusClass = 'quote-approved';
+                        }else if(quote.status === 'Rejected')
+                        {
+                            statusClass = 'quote-rejected';
+                        }else   
+                        {
+                            statusClass = 'quote-pending';
+                        }
+
+                        //Displays The quote info
+                        $('#quotes').append(`<div class="quote-div" data-id="${quote.id}" data-email="${user.email}"><h2>ID: ${quote.id} | Type: ${quote.name} | Address: ${quote.address} | Plugs:${quote.numberplugs} 
+                        | Switches: ${quote.numberswitches} <br> Status: <span class="${statusClass}">${quote.status}</span></h2>
+                        <button class="adminQuoteB" id="ApproveB">Approve</button> 
+                        <button class="adminQuoteB" id="RejectB">Reject</button> 
+                        <button class="adminQuoteB" id="deleteB">Delete</button></div>`);
                     });
         
                     $('#quotes').append(`<hr class="white-line">`);
                 }
+
+                //Approve Button Functionality
+                $('#quotes').on('click', '#ApproveB', function() {
+                    //Searches for the correct quote div and find the quote in the array to edit
+                    const quoteDiv = $(this).closest('.quote-div');
+                    const id = parseInt(quoteDiv.data('id'), 10);
+                    let quote = user.quotes.find(quote => quote.id === id);
+
+                    //Edits the quote status and resaves it into memory
+                    quote.status = 'Approved';
+
+                    localStorage.setItem('users', JSON.stringify(users));
+                    location.reload();
+                });
+
+                //Reject Button Functionality
+                $('#quotes').on('click', '#RejectB', function() {
+                    //Searches for the correct quote div and find the quote in the array to edit
+                    const quoteDiv = $(this).closest('.quote-div');
+                    const id = parseInt(quoteDiv.data('id'), 10);
+                    let quote = user.quotes.find(quote => quote.id === id);
+
+                    //Edits the quote status and resaves it into memory
+                    quote.status = 'Rejected';
+
+                    localStorage.setItem('users', JSON.stringify(users));
+                    location.reload();
+                });
+
+                //Delete Button Functionality
+                $('#quotes').on('click', '#deleteB', function() {
+                    //Searches for the correct quote div, ID, and Email of the correct quote 
+                    const quoteDiv = $(this).closest('.quote-div');
+                    const id = parseInt(quoteDiv.data('id'), 10);
+                    const email = quoteDiv.data('email');
+            
+                    //Filters out the quote that needs to be deleted form the quotes array, and saves to memory
+                    user.quotes = user.quotes.filter(quote => quote.id !== id);
+
+                    localStorage.setItem('users', JSON.stringify(users));
+                    location.reload();
+                });
             }
         });
     }

@@ -13,11 +13,9 @@ $(document).ready(function() {
             phone:'555',
             email: "admin@gmail.com",
             password: "admin",
-            
         });
         localStorage.setItem("users", JSON.stringify(users)); 
     }
-
 
     //Validator Plugin to check Email and Password
     $("#login-form").validate({
@@ -42,29 +40,20 @@ $(document).ready(function() {
         },
         submitHandler: function (form, event) {
             event.preventDefault();
-            
+
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
             //Finds the User from Users Array in memory, based on user input
             let email = $('input[name="login-email"]').val();
             let password = $('input[name="login-password"]').val();
 
-            let user = users.find(user => user.email === email && user.password === password);
+            let user = users.find(user => user.email === email && user.password === password);    
 
             //If found, loads all the user information and saves under loggedIn user to load in the client portal
             if (user) 
             {
-                let savedUserData = JSON.parse(localStorage.getItem(email));
-
-                if (savedUserData) 
-                {
-                    user.quotes = savedUserData.quotes || [];  
-                    user.counter = savedUserData.counter || 0; 
-                } else {
-                    user.quotes = [];
-                    user.counter = 0;
-                }
-        
+                //Saves the loggedin user data temporarly into memory to login to a specified portal
                 localStorage.setItem("loggedInUser", JSON.stringify(user));
-                localStorage.setItem(email, JSON.stringify(user)); 
 
                 //Checks if the loggin User is supposed to be Admin or not, and redirects accordginly
                 if(user.email === 'admin@gmail.com' && user.password === 'admin')
@@ -74,7 +63,6 @@ $(document).ready(function() {
                     window.location.href = 'client-portal.html';
                 }
             }else {
-                console.log(users);
                 alert("Invalid email or password.");
             }
         }

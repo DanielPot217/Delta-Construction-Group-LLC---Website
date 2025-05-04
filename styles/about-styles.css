@@ -52,17 +52,33 @@ body{
     flex-direction: column;
     flex-wrap: nowrap;
 }
-.about-us-h1{
+#our-services-h1{
     font-size: 100px;
     font-weight: bold;
 
-    margin-left: 70px;
+    margin-left: 50px;
 }
-.about-us-p{
+#about-us-h1{
+    font-size: 100px;
+    font-weight: bold;
+
+    margin-left: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#about-us-p{
     color: white;
     font-size: 50px;
-
     margin-left: 40px;
+    margin-top: 0;
+    padding: 0;
+}
+
+ul{
+    margin:0;
+    margin-left: 70px;
+    color: white;
+    font-size: 50px;
 }
 
 /*Footer Styles*/
